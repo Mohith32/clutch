@@ -593,6 +593,32 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get widgetManual => 'होम स्क्रीन को दबाकर रखें → Widgets → Clutch।';
+
+  @override
+  String get nowBarTitle => 'Now Bar में दिखाएँ';
+
+  @override
+  String get nowBarSub =>
+      'लॉक स्क्रीन पर एक छोटी “आपातकाल में” पिल। टैप करने पर QR दिखता है। Live Updates वाले Android 16+ फ़ोन (Samsung One UI 8+, Pixel)।';
+
+  @override
+  String get nowBarOn => 'इमरजेंसी पिल चालू है ✓';
+
+  @override
+  String get nowBarBlocked =>
+      'पिल दिखाने के लिए Clutch के Live notifications चालू करें';
+
+  @override
+  String get passTitle => 'आपातकाल में';
+
+  @override
+  String get passBody => 'मेरा इमरजेंसी QR देखने के लिए टैप करें';
+
+  @override
+  String get passChip => 'SOS';
+
+  @override
+  String get passChannel => 'इमरजेंसी पिल';
 }
 
 /// The translations for Hindi, using the Latin script (`hi_Latn`).
@@ -1184,4 +1210,30 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
 
   @override
   String get widgetManual => 'Home screen ko hold karo → Widgets → Clutch.';
+
+  @override
+  String get nowBarTitle => 'Now Bar mein dikhao';
+
+  @override
+  String get nowBarSub =>
+      'Lock screen pe ek chhoti “In case of emergency” pill. Tap karo to QR dikhega. Live Updates wale Android 16+ phones (Samsung One UI 8+, Pixel).';
+
+  @override
+  String get nowBarOn => 'Emergency pill on hai ✓';
+
+  @override
+  String get nowBarBlocked =>
+      'Pill dikhane ke liye Clutch ke Live notifications on karo';
+
+  @override
+  String get passTitle => 'In case of emergency';
+
+  @override
+  String get passBody => 'Mera emergency QR dekhne ke liye tap karo';
+
+  @override
+  String get passChip => 'SOS';
+
+  @override
+  String get passChannel => 'Emergency pill';
 }

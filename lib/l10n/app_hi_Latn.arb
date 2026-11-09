@@ -180,5 +180,13 @@
   "widgetSub": "Tera “In case of emergency” QR home screen pe, ya jahan phone allow kare wahan lock screen pe. Tap karo to QR full screen.",
   "addWidget": "Widget add karo",
   "widgetLockHint": "QR ko home screen pe add karta hai. Pixel aur lock screen widget wale phones pe wahan bhi add kar sakte ho. Samsung lock screen pe sirf apne widgets allow karta hai, to wahan QR wallpaper ya Quick Settings tile use karo.",
-  "widgetManual": "Home screen ko hold karo → Widgets → Clutch."
+  "widgetManual": "Home screen ko hold karo → Widgets → Clutch.",
+  "nowBarTitle": "Now Bar mein dikhao",
+  "nowBarSub": "Lock screen pe ek chhoti “In case of emergency” pill. Tap karo to QR dikhega. Live Updates wale Android 16+ phones (Samsung One UI 8+, Pixel).",
+  "nowBarOn": "Emergency pill on hai ✓",
+  "nowBarBlocked": "Pill dikhane ke liye Clutch ke Live notifications on karo",
+  "passTitle": "In case of emergency",
+  "passBody": "Mera emergency QR dekhne ke liye tap karo",
+  "passChip": "SOS",
+  "passChannel": "Emergency pill"
 }

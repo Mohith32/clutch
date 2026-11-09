@@ -1186,6 +1186,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Touch and hold your home screen → Widgets → Clutch.'**
   String get widgetManual;
+
+  /// No description provided for @nowBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show in Now Bar'**
+  String get nowBarTitle;
+
+  /// No description provided for @nowBarSub.
+  ///
+  /// In en, this message translates to:
+  /// **'A small “In case of emergency” pill on your lock screen. Tap it to show your QR. Android 16+ phones with Live Updates (Samsung One UI 8+, Pixel).'**
+  String get nowBarSub;
+
+  /// No description provided for @nowBarOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency pill is on ✓'**
+  String get nowBarOn;
+
+  /// No description provided for @nowBarBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on Live notifications for Clutch to show the pill'**
+  String get nowBarBlocked;
+
+  /// No description provided for @passTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'In case of emergency'**
+  String get passTitle;
+
+  /// No description provided for @passBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to show my emergency QR'**
+  String get passBody;
+
+  /// No description provided for @passChip.
+  ///
+  /// In en, this message translates to:
+  /// **'SOS'**
+  String get passChip;
+
+  /// No description provided for @passChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency pill'**
+  String get passChannel;
 }
 
 class _AppLocalizationsDelegate

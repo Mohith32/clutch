@@ -1,6 +1,10 @@
 package app.clutch.clutch
 
+import android.app.Notification
+import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.os.Bundle
 import android.app.StatusBarManager
 import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager
@@ -120,6 +124,22 @@ class MainActivity : FlutterFragmentActivity() {
                     getSystemService(NotificationManager::class.java).cancel(7101) // older builds used a notification
                     result.success(null)
                 }
+                "nowBar" -> {
+                    val a = call.arguments as Map<*, *>
+                    val nm = getSystemService(NotificationManager::class.java)
+                    if (a["on"] == true) {
+                        showNowBar(a["title"] as String, a["body"] as String, a["chip"] as String, a["channel"] as String)
+                    } else {
+                        nm.cancel(NOW_BAR_ID)
+                    }
+                    result.success(Build.VERSION.SDK_INT >= 36 && nm.canPostPromotedNotifications())
+                }
+                "openPromotionSettings" -> {
+                    val i = Intent("android.settings.APP_NOTIFICATION_PROMOTION_SETTINGS")
+                        .putExtra("android.provider.extra.APP_PACKAGE", packageName)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    result.success(try { startActivity(i); true } catch (_: Exception) { false })
+                }
                 "pinWidget" -> {
                     val awm = AppWidgetManager.getInstance(this)
                     result.success(
@@ -150,6 +170,46 @@ class MainActivity : FlutterFragmentActivity() {
                 else -> result.notImplemented()
             }
         }
+    }
+
+    /**
+     * Android 16 "Live Update" (promoted ongoing notification). On One UI 8+ it
+     * shows as a Now Bar pill on the lock screen; on other Android 16+ phones as a
+     * status-bar chip. Tapping opens EmergencyActivity over the lock screen.
+     * The promotion request goes through extras so it works on compileSdk 36.
+     */
+    private fun showNowBar(title: String, body: String, chip: String, channelName: String) {
+        val nm = getSystemService(NotificationManager::class.java)
+        nm.createNotificationChannel(
+            NotificationChannel(NOW_BAR_CHANNEL, channelName, NotificationManager.IMPORTANCE_DEFAULT).apply {
+                lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+                setSound(null, null)
+                enableVibration(false)
+                setShowBadge(false)
+            },
+        )
+        val open = PendingIntent.getActivity(
+            this, 3,
+            Intent(this, EmergencyActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+        )
+        val b = Notification.Builder(this, NOW_BAR_CHANNEL)
+            .setSmallIcon(R.drawable.ic_stat_clutch)
+            .setContentTitle(title)
+            .setContentText(body)
+            .setStyle(Notification.BigTextStyle().bigText(body))
+            .setContentIntent(open)
+            .setOngoing(true)
+            .setOnlyAlertOnce(true)
+            .setVisibility(Notification.VISIBILITY_PUBLIC)
+            .addExtras(Bundle().apply { putBoolean("android.requestPromotedOngoing", true) })
+        if (Build.VERSION.SDK_INT >= 36) b.setShortCriticalText(chip)
+        nm.notify(NOW_BAR_ID, b.build())
+    }
+
+    companion object {
+        const val NOW_BAR_ID = 7102
+        const val NOW_BAR_CHANNEL = "now_bar"
     }
 
     private fun setLockWallpaper(png: ByteArray, result: MethodChannel.Result) {

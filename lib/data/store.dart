@@ -27,6 +27,7 @@ class AppStore extends ChangeNotifier {
   bool lock = false;
   String? sosOverride;
   bool askedNotifications = false;
+  bool nowBar = false; // emergency pill in the Now Bar (Android 16 Live Update)
 
   Profile? get selected => profiles.isEmpty ? null : profiles[current.clamp(0, profiles.length - 1)];
   String get defaultSos => sosFor(PlatformDispatcher.instance.locale.countryCode);
@@ -69,6 +70,7 @@ class AppStore extends ChangeNotifier {
         'lock': lock,
         'sos': sosOverride,
         'askedNotifications': askedNotifications,
+        'nowBar': nowBar,
       };
 
   void _fromJson(Map j) {
@@ -81,6 +83,7 @@ class AppStore extends ChangeNotifier {
     lock = j['lock'] ?? false;
     sosOverride = j['sos'];
     askedNotifications = j['askedNotifications'] ?? false;
+    nowBar = j['nowBar'] ?? false;
   }
 
   Future<void> save() async {

@@ -355,6 +355,23 @@ class _StudioScreenState extends State<StudioScreen> {
     if (!await Native.pinWidget() && mounted) toast(context, l.widgetManual);
   }
 
+  Future<void> _toggleNowBar(bool on) async {
+    final l = context.l;
+    if (on) await Effects.askNotificationPermission();
+    store.nowBar = on;
+    await store.save();
+    if (!on) return;
+    // save() re-posts the pill; check the system actually allows promotion.
+    final allowed = await Native.nowBar(on: true, title: l.passTitle, body: l.passBody, chip: l.passChip, channel: l.passChannel);
+    if (!mounted) return;
+    if (allowed) {
+      toast(context, l.nowBarOn);
+    } else {
+      toast(context, l.nowBarBlocked, bad: true);
+      await Native.openPromotionSettings();
+    }
+  }
+
   Future<void> _addTile() async {
     final l = context.l;
     if (await Native.addTile(l.tileLabel) == -1 && mounted) toast(context, l.tileManual);
@@ -472,6 +489,20 @@ class _StudioScreenState extends State<StudioScreen> {
             NeoButton(label: l.addWidget, icon: Icons.add_rounded, small: true, onPressed: _addWidget),
             const SizedBox(height: 10),
             Text(l.widgetLockHint, style: TextStyle(color: context.muted, fontSize: 13, height: 1.4)),
+            const SizedBox(height: 16),
+            Divider(color: context.edge, height: 1),
+            const SizedBox(height: 16),
+            Row(children: [
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(l.nowBarTitle, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                  const SizedBox(height: 3),
+                  Text(l.nowBarSub, style: TextStyle(color: context.muted, fontSize: 13, height: 1.4)),
+                ]),
+              ),
+              const SizedBox(width: 12),
+              NeoSwitch(value: store.nowBar, onChanged: _toggleNowBar, label: l.nowBarTitle),
+            ]),
             const SizedBox(height: 6),
             Align(
               alignment: Alignment.centerLeft,

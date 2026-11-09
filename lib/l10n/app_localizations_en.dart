@@ -594,4 +594,30 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get widgetManual =>
       'Touch and hold your home screen → Widgets → Clutch.';
+
+  @override
+  String get nowBarTitle => 'Show in Now Bar';
+
+  @override
+  String get nowBarSub =>
+      'A small “In case of emergency” pill on your lock screen. Tap it to show your QR. Android 16+ phones with Live Updates (Samsung One UI 8+, Pixel).';
+
+  @override
+  String get nowBarOn => 'Emergency pill is on ✓';
+
+  @override
+  String get nowBarBlocked =>
+      'Turn on Live notifications for Clutch to show the pill';
+
+  @override
+  String get passTitle => 'In case of emergency';
+
+  @override
+  String get passBody => 'Tap to show my emergency QR';
+
+  @override
+  String get passChip => 'SOS';
+
+  @override
+  String get passChannel => 'Emergency pill';
 }

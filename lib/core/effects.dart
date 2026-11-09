@@ -47,6 +47,12 @@ class Native {
   /// and the Quick Settings tile; null removes it.
   static Future<void> syncPass(Uint8List? png) => _c.invokeMethod('syncPass', png);
 
+  /// Now Bar / Live Update pill. Returns whether the system lets Clutch promote
+  /// notifications (false on Android < 16 or if the user turned it off).
+  static Future<bool> nowBar({required bool on, String title = '', String body = '', String chip = '', String channel = ''}) async =>
+      await _c.invokeMethod<bool>('nowBar', {'on': on, 'title': title, 'body': body, 'chip': chip, 'channel': channel}) ?? false;
+  static Future<bool> openPromotionSettings() async => await _c.invokeMethod<bool>('openPromotionSettings') ?? false;
+
   /// Asks the launcher to add the Emergency QR widget. False if it can't.
   static Future<bool> pinWidget() async => await _c.invokeMethod<bool>('pinWidget') ?? false;
 
@@ -99,9 +105,14 @@ class Effects {
     if (!isAndroid) return;
     final p = s.selected;
     final overlay = navKey.currentState?.overlay;
-    if (p == null || overlay == null) return Native.syncPass(null);
+    if (p == null || overlay == null) {
+      await Native.nowBar(on: false);
+      return Native.syncPass(null);
+    }
     final png = await capture(overlay.context, Center(child: QrBadge(p: p, sos: s.sos)), QrBadge.exportSize, 3, overlay: overlay);
     await Native.syncPass(png);
+    final l = s.l10n;
+    await Native.nowBar(on: s.nowBar, title: l.passTitle, body: l.passBody, chip: l.passChip, channel: l.passChannel);
   }
 
 

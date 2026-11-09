@@ -594,4 +594,30 @@ class AppLocalizationsTe extends AppLocalizations {
   @override
   String get widgetManual =>
       'హోమ్ స్క్రీన్‌ను నొక్కి పట్టుకోండి → Widgets → Clutch.';
+
+  @override
+  String get nowBarTitle => 'Now Bar లో చూపించు';
+
+  @override
+  String get nowBarSub =>
+      'లాక్ స్క్రీన్‌పై చిన్న “అత్యవసర సమయంలో” పిల్. నొక్కితే QR కనిపిస్తుంది. Live Updates ఉన్న Android 16+ ఫోన్‌లు (Samsung One UI 8+, Pixel).';
+
+  @override
+  String get nowBarOn => 'ఎమర్జెన్సీ పిల్ ఆన్‌లో ఉంది ✓';
+
+  @override
+  String get nowBarBlocked =>
+      'పిల్ చూపించడానికి Clutch కి Live notifications ఆన్ చేయండి';
+
+  @override
+  String get passTitle => 'అత్యవసర సమయంలో';
+
+  @override
+  String get passBody => 'నా ఎమర్జెన్సీ QR చూపించడానికి నొక్కండి';
+
+  @override
+  String get passChip => 'SOS';
+
+  @override
+  String get passChannel => 'ఎమర్జెన్సీ పిల్';
 }
