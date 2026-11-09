@@ -589,7 +589,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String get widgetLockHint =>
-      'లాక్ స్క్రీన్ కోసం: లాక్ స్క్రీన్‌ను నొక్కి పట్టుకోండి → Widgets → Clutch.';
+      'QR ను హోమ్ స్క్రీన్‌కు జోడిస్తుంది. Pixel మరియు లాక్ స్క్రీన్ విడ్జెట్‌లు ఉన్న ఫోన్‌లలో అక్కడ కూడా జోడించవచ్చు. Samsung లాక్ స్క్రీన్‌పై తన విడ్జెట్‌లను మాత్రమే అనుమతిస్తుంది, కాబట్టి అక్కడ QR వాల్‌పేపర్ లేదా క్విక్ సెట్టింగ్స్ టైల్ వాడండి.';
 
   @override
   String get widgetManual =>

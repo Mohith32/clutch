@@ -179,6 +179,6 @@
   "widgetTitle": "Emergency QR widget",
   "widgetSub": "Tera “In case of emergency” QR home screen pe, ya jahan phone allow kare wahan lock screen pe. Tap karo to QR full screen.",
   "addWidget": "Widget add karo",
-  "widgetLockHint": "Lock screen ke liye: lock screen ko hold karo → Widgets → Clutch.",
+  "widgetLockHint": "QR ko home screen pe add karta hai. Pixel aur lock screen widget wale phones pe wahan bhi add kar sakte ho. Samsung lock screen pe sirf apne widgets allow karta hai, to wahan QR wallpaper ya Quick Settings tile use karo.",
   "widgetManual": "Home screen ko hold karo → Widgets → Clutch."
 }

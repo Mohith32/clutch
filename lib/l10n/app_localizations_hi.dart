@@ -589,7 +589,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get widgetLockHint =>
-      'लॉक स्क्रीन के लिए: लॉक स्क्रीन को दबाकर रखें → Widgets → Clutch।';
+      'QR को होम स्क्रीन पर जोड़ता है। Pixel और लॉक स्क्रीन विजेट वाले फ़ोन पर इसे वहाँ भी जोड़ सकते हैं। Samsung लॉक स्क्रीन पर सिर्फ़ अपने विजेट चलने देता है, इसलिए वहाँ QR वॉलपेपर या क्विक सेटिंग्स टाइल इस्तेमाल करें।';
 
   @override
   String get widgetManual => 'होम स्क्रीन को दबाकर रखें → Widgets → Clutch।';
@@ -1180,7 +1180,7 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
 
   @override
   String get widgetLockHint =>
-      'Lock screen ke liye: lock screen ko hold karo → Widgets → Clutch.';
+      'QR ko home screen pe add karta hai. Pixel aur lock screen widget wale phones pe wahan bhi add kar sakte ho. Samsung lock screen pe sirf apne widgets allow karta hai, to wahan QR wallpaper ya Quick Settings tile use karo.';
 
   @override
   String get widgetManual => 'Home screen ko hold karo → Widgets → Clutch.';

@@ -1178,7 +1178,7 @@ abstract class AppLocalizations {
   /// No description provided for @widgetLockHint.
   ///
   /// In en, this message translates to:
-  /// **'For the lock screen: touch and hold the lock screen → Widgets → Clutch.'**
+  /// **'Adds the QR to your home screen. On Pixel and other phones with lock screen widgets, you can add it there too. Samsung only allows its own widgets on the lock screen, so use the QR wallpaper or the Quick Settings tile.'**
   String get widgetLockHint;
 
   /// No description provided for @widgetManual.
