@@ -168,11 +168,6 @@
   "styleSage": "Sage",
   "styleRose": "Rose",
   "styleSky": "Sky",
-  "passToggle": "Lock screen button",
-  "passToggleSub": "Ek “Clutch SOS” button add karta hai jo lock screen pe rakh sakte ho. Tap karo to bina unlock ke QR dikhega.",
-  "passSetupTitle": "SOS button lock screen pe lagao",
-  "passSteps": "1. Lock screen ko touch karke hold karo, ya lock screen settings → Edit Lock screen kholo\n2. Neeche ke do shortcuts mein se ek pe tap karo\n3. “Clutch SOS” chuno aur Done dabao",
-  "openLockSettings": "Lock screen settings kholo",
   "addTile": "Quick Settings mein bhi add karo",
   "tileLabel": "Emergency QR",
   "tileManual": "Do baar neeche swipe karo, ✎ edit dabao aur “Emergency QR” add karo.",
@@ -180,5 +175,10 @@
   "qrModeLink": "Clutch page",
   "qrModeText": "Plain text",
   "qrModeLinkHint": "Tap-to-call buttons wala clean Clutch page khulta hai. Scan karne wale phone mein internet chahiye. Details sirf QR mein hain, kisi server pe nahi.",
-  "qrModeTextHint": "Bina internet ke bhi chalta hai, par plain text mein khulta hai."
+  "qrModeTextHint": "Bina internet ke bhi chalta hai, par plain text mein khulta hai.",
+  "widgetTitle": "Emergency QR widget",
+  "widgetSub": "Tera “In case of emergency” QR home screen pe, ya jahan phone allow kare wahan lock screen pe. Tap karo to QR full screen.",
+  "addWidget": "Widget add karo",
+  "widgetLockHint": "Lock screen ke liye: lock screen ko hold karo → Widgets → Clutch.",
+  "widgetManual": "Home screen ko hold karo → Widgets → Clutch."
 }

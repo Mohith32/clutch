@@ -39,21 +39,6 @@
             android:taskAffinity="app.clutch.emergency"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
 
-        <!-- "Clutch SOS": a launcher entry for the same screen, enabled only while the
-             lock-screen button is on, so it can be chosen as a lock-screen shortcut. -->
-        <activity-alias
-            android:name=".SosShortcut"
-            android:targetActivity=".EmergencyActivity"
-            android:enabled="false"
-            android:exported="true"
-            android:icon="@mipmap/ic_sos"
-            android:label="@string/sos_label">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity-alias>
-
         <!-- "Emergency QR" widget for the lock screen (keyguard) and home screen -->
         <receiver android:name=".SosWidgetProvider" android:exported="false" android:label="@string/sos_tile">
             <intent-filter>

@@ -551,23 +551,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get styleSky => 'Sky';
 
   @override
-  String get passToggle => 'Lock screen button';
-
-  @override
-  String get passToggleSub =>
-      'Adds a “Clutch SOS” button you can put on your lock screen. Tapping it shows your QR without unlocking.';
-
-  @override
-  String get passSetupTitle => 'Put the SOS button on your lock screen';
-
-  @override
-  String get passSteps =>
-      '1. Touch and hold your lock screen, or open lock screen settings → Edit Lock screen\n2. Tap one of the two bottom shortcuts\n3. Pick “Clutch SOS” and tap Done';
-
-  @override
-  String get openLockSettings => 'Open lock screen settings';
-
-  @override
   String get addTile => 'Also add to Quick Settings';
 
   @override
@@ -593,4 +576,22 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get qrModeTextHint =>
       'Works with no internet at all, but opens as plain text.';
+
+  @override
+  String get widgetTitle => 'Emergency QR widget';
+
+  @override
+  String get widgetSub =>
+      'Puts your “In case of emergency” QR on your home screen, or your lock screen where your phone allows it. Tap it to show the QR full screen.';
+
+  @override
+  String get addWidget => 'Add widget';
+
+  @override
+  String get widgetLockHint =>
+      'For the lock screen: touch and hold the lock screen → Widgets → Clutch.';
+
+  @override
+  String get widgetManual =>
+      'Touch and hold your home screen → Widgets → Clutch.';
 }

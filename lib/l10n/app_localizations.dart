@@ -1109,36 +1109,6 @@ abstract class AppLocalizations {
   /// **'Sky'**
   String get styleSky;
 
-  /// No description provided for @passToggle.
-  ///
-  /// In en, this message translates to:
-  /// **'Lock screen button'**
-  String get passToggle;
-
-  /// No description provided for @passToggleSub.
-  ///
-  /// In en, this message translates to:
-  /// **'Adds a “Clutch SOS” button you can put on your lock screen. Tapping it shows your QR without unlocking.'**
-  String get passToggleSub;
-
-  /// No description provided for @passSetupTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Put the SOS button on your lock screen'**
-  String get passSetupTitle;
-
-  /// No description provided for @passSteps.
-  ///
-  /// In en, this message translates to:
-  /// **'1. Touch and hold your lock screen, or open lock screen settings → Edit Lock screen\n2. Tap one of the two bottom shortcuts\n3. Pick “Clutch SOS” and tap Done'**
-  String get passSteps;
-
-  /// No description provided for @openLockSettings.
-  ///
-  /// In en, this message translates to:
-  /// **'Open lock screen settings'**
-  String get openLockSettings;
-
   /// No description provided for @addTile.
   ///
   /// In en, this message translates to:
@@ -1186,6 +1156,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Works with no internet at all, but opens as plain text.'**
   String get qrModeTextHint;
+
+  /// No description provided for @widgetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency QR widget'**
+  String get widgetTitle;
+
+  /// No description provided for @widgetSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Puts your “In case of emergency” QR on your home screen, or your lock screen where your phone allows it. Tap it to show the QR full screen.'**
+  String get widgetSub;
+
+  /// No description provided for @addWidget.
+  ///
+  /// In en, this message translates to:
+  /// **'Add widget'**
+  String get addWidget;
+
+  /// No description provided for @widgetLockHint.
+  ///
+  /// In en, this message translates to:
+  /// **'For the lock screen: touch and hold the lock screen → Widgets → Clutch.'**
+  String get widgetLockHint;
+
+  /// No description provided for @widgetManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Touch and hold your home screen → Widgets → Clutch.'**
+  String get widgetManual;
 }
 
 class _AppLocalizationsDelegate

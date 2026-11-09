@@ -551,23 +551,6 @@ class AppLocalizationsTe extends AppLocalizations {
   String get styleSky => 'స్కై';
 
   @override
-  String get passToggle => 'లాక్ స్క్రీన్ బటన్';
-
-  @override
-  String get passToggleSub =>
-      'లాక్ స్క్రీన్‌పై పెట్టుకోగల “Clutch SOS” బటన్‌ను జోడిస్తుంది. నొక్కితే అన్‌లాక్ చేయకుండానే QR కనిపిస్తుంది.';
-
-  @override
-  String get passSetupTitle => 'SOS బటన్‌ను లాక్ స్క్రీన్‌పై పెట్టండి';
-
-  @override
-  String get passSteps =>
-      '1. లాక్ స్క్రీన్‌ను నొక్కి పట్టుకోండి, లేదా లాక్ స్క్రీన్ సెట్టింగ్‌లు → Edit Lock screen తెరవండి\n2. కింద ఉన్న రెండు షార్ట్‌కట్‌లలో ఒకదాన్ని నొక్కండి\n3. “Clutch SOS” ఎంచుకుని Done నొక్కండి';
-
-  @override
-  String get openLockSettings => 'లాక్ స్క్రీన్ సెట్టింగ్‌లు తెరవండి';
-
-  @override
   String get addTile => 'క్విక్ సెట్టింగ్స్‌లో కూడా జోడించు';
 
   @override
@@ -593,4 +576,22 @@ class AppLocalizationsTe extends AppLocalizations {
   @override
   String get qrModeTextHint =>
       'ఇంటర్నెట్ లేకపోయినా పనిచేస్తుంది, కానీ సాధారణ టెక్స్ట్‌గా తెరుచుకుంటుంది.';
+
+  @override
+  String get widgetTitle => 'ఎమర్జెన్సీ QR విడ్జెట్';
+
+  @override
+  String get widgetSub =>
+      'మీ “అత్యవసర సమయంలో” QR ను హోమ్ స్క్రీన్‌పై, లేదా ఫోన్ అనుమతిస్తే లాక్ స్క్రీన్‌పై ఉంచుతుంది. నొక్కితే QR పూర్తి స్క్రీన్‌లో కనిపిస్తుంది.';
+
+  @override
+  String get addWidget => 'విడ్జెట్ జోడించు';
+
+  @override
+  String get widgetLockHint =>
+      'లాక్ స్క్రీన్ కోసం: లాక్ స్క్రీన్‌ను నొక్కి పట్టుకోండి → Widgets → Clutch.';
+
+  @override
+  String get widgetManual =>
+      'హోమ్ స్క్రీన్‌ను నొక్కి పట్టుకోండి → Widgets → Clutch.';
 }

@@ -350,50 +350,14 @@ class _StudioScreenState extends State<StudioScreen> {
     await store.upsert(p, touch: false);
   }
 
-  Future<void> _toggleLockPass(bool on) async {
-    store.lockPass = on;
-    await store.save();
-    if (on && mounted) _lockSetup();
+  Future<void> _addWidget() async {
+    final l = context.l;
+    if (!await Native.pinWidget() && mounted) toast(context, l.widgetManual);
   }
 
-  /// Walks the user through putting the "Clutch SOS" button on the lock screen.
-  void _lockSetup() {
+  Future<void> _addTile() async {
     final l = context.l;
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      builder: (c) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-          child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-            Row(children: [
-              Container(
-                width: 52,
-                height: 52,
-                decoration: BoxDecoration(color: C.red, borderRadius: BorderRadius.circular(16)),
-                child: const Icon(Icons.qr_code_scanner_rounded, color: C.white),
-              ),
-              const SizedBox(width: 14),
-              Expanded(child: Text(l.passSetupTitle, style: Theme.of(c).textTheme.titleLarge)),
-            ]),
-            const SizedBox(height: 18),
-            Text(l.passSteps, style: const TextStyle(fontSize: 16, height: 1.7)),
-            const SizedBox(height: 20),
-            NeoButton(label: l.openLockSettings, icon: Icons.settings_outlined, onPressed: Native.openLockSettings),
-            const SizedBox(height: 12),
-            NeoButton(
-              label: l.addTile,
-              icon: Icons.grid_view_rounded,
-              color: C.white,
-              onPressed: () async {
-                final code = await Native.addTile(l.tileLabel);
-                if (code == -1 && c.mounted) toast(c, l.tileManual);
-              },
-            ),
-          ]),
-        ),
-      ),
-    );
+    if (await Native.addTile(l.tileLabel) == -1 && mounted) toast(context, l.tileManual);
   }
 
   List<Widget> _wallpaperTab(BuildContext context, Profile p) {
@@ -487,23 +451,36 @@ class _StudioScreenState extends State<StudioScreen> {
         const SizedBox(height: 28),
         Neo(
           padding: const EdgeInsets.all(18),
-          child: Row(children: [
-            Container(
-              width: 44,
-              height: 44,
-              decoration: const BoxDecoration(color: C.rose, shape: BoxShape.circle),
-              child: const Icon(Icons.lock_outline_rounded, color: C.ink, size: 22),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            Row(children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: const BoxDecoration(color: C.rose, shape: BoxShape.circle),
+                child: const Icon(Icons.widgets_outlined, color: C.ink, size: 22),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(l.widgetTitle, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+                  const SizedBox(height: 3),
+                  Text(l.widgetSub, style: TextStyle(color: context.muted, fontSize: 13, height: 1.4)),
+                ]),
+              ),
+            ]),
+            const SizedBox(height: 16),
+            NeoButton(label: l.addWidget, icon: Icons.add_rounded, small: true, onPressed: _addWidget),
+            const SizedBox(height: 10),
+            Text(l.widgetLockHint, style: TextStyle(color: context.muted, fontSize: 13, height: 1.4)),
+            const SizedBox(height: 6),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                onPressed: _addTile,
+                icon: Icon(Icons.grid_view_rounded, size: 18, color: context.line),
+                label: Text(l.addTile, style: TextStyle(color: context.line, fontWeight: FontWeight.w600)),
+              ),
             ),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(l.passToggle, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
-                const SizedBox(height: 3),
-                Text(l.passToggleSub, style: TextStyle(color: context.muted, fontSize: 13, height: 1.4)),
-              ]),
-            ),
-            const SizedBox(width: 12),
-            NeoSwitch(value: store.lockPass, onChanged: _toggleLockPass, label: l.passToggle),
           ]),
         ),
       ],

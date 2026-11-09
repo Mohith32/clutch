@@ -551,23 +551,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get styleSky => 'स्काई';
 
   @override
-  String get passToggle => 'लॉक स्क्रीन बटन';
-
-  @override
-  String get passToggleSub =>
-      '“Clutch SOS” बटन जोड़ता है जिसे लॉक स्क्रीन पर रख सकते हैं। टैप करने पर बिना अनलॉक किए QR दिखता है।';
-
-  @override
-  String get passSetupTitle => 'SOS बटन को लॉक स्क्रीन पर लगाएँ';
-
-  @override
-  String get passSteps =>
-      '1. लॉक स्क्रीन को दबाकर रखें, या लॉक स्क्रीन सेटिंग्स → Edit Lock screen खोलें\n2. नीचे के दो शॉर्टकट में से एक पर टैप करें\n3. “Clutch SOS” चुनें और Done दबाएँ';
-
-  @override
-  String get openLockSettings => 'लॉक स्क्रीन सेटिंग्स खोलें';
-
-  @override
   String get addTile => 'क्विक सेटिंग्स में भी जोड़ें';
 
   @override
@@ -593,6 +576,23 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get qrModeTextHint =>
       'बिना इंटरनेट के भी काम करता है, पर सादे टेक्स्ट में खुलता है।';
+
+  @override
+  String get widgetTitle => 'इमरजेंसी QR विजेट';
+
+  @override
+  String get widgetSub =>
+      'आपका “आपातकाल में” QR होम स्क्रीन पर, या जहाँ फ़ोन अनुमति दे वहाँ लॉक स्क्रीन पर रखता है। टैप करने पर QR पूरी स्क्रीन पर दिखता है।';
+
+  @override
+  String get addWidget => 'विजेट जोड़ें';
+
+  @override
+  String get widgetLockHint =>
+      'लॉक स्क्रीन के लिए: लॉक स्क्रीन को दबाकर रखें → Widgets → Clutch।';
+
+  @override
+  String get widgetManual => 'होम स्क्रीन को दबाकर रखें → Widgets → Clutch।';
 }
 
 /// The translations for Hindi, using the Latin script (`hi_Latn`).
@@ -1142,23 +1142,6 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
   String get styleSky => 'Sky';
 
   @override
-  String get passToggle => 'Lock screen button';
-
-  @override
-  String get passToggleSub =>
-      'Ek “Clutch SOS” button add karta hai jo lock screen pe rakh sakte ho. Tap karo to bina unlock ke QR dikhega.';
-
-  @override
-  String get passSetupTitle => 'SOS button lock screen pe lagao';
-
-  @override
-  String get passSteps =>
-      '1. Lock screen ko touch karke hold karo, ya lock screen settings → Edit Lock screen kholo\n2. Neeche ke do shortcuts mein se ek pe tap karo\n3. “Clutch SOS” chuno aur Done dabao';
-
-  @override
-  String get openLockSettings => 'Lock screen settings kholo';
-
-  @override
   String get addTile => 'Quick Settings mein bhi add karo';
 
   @override
@@ -1184,4 +1167,21 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
   @override
   String get qrModeTextHint =>
       'Bina internet ke bhi chalta hai, par plain text mein khulta hai.';
+
+  @override
+  String get widgetTitle => 'Emergency QR widget';
+
+  @override
+  String get widgetSub =>
+      'Tera “In case of emergency” QR home screen pe, ya jahan phone allow kare wahan lock screen pe. Tap karo to QR full screen.';
+
+  @override
+  String get addWidget => 'Widget add karo';
+
+  @override
+  String get widgetLockHint =>
+      'Lock screen ke liye: lock screen ko hold karo → Widgets → Clutch.';
+
+  @override
+  String get widgetManual => 'Home screen ko hold karo → Widgets → Clutch.';
 }

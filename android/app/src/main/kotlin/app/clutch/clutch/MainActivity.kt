@@ -3,11 +3,10 @@ package app.clutch.clutch
 import android.app.NotificationManager
 import android.app.StatusBarManager
 import android.app.WallpaperManager
+import android.appwidget.AppWidgetManager
 import android.content.ComponentName
-import android.content.pm.PackageManager
 import android.graphics.drawable.Icon
 import android.os.Build
-import android.provider.Settings
 import androidx.activity.result.PickVisualMediaRequest
 import java.io.File
 import android.content.Intent
@@ -113,23 +112,20 @@ class MainActivity : FlutterFragmentActivity() {
                     imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
                 "syncPass" -> {
-                    // QR image for EmergencyActivity, the widget and the tile; the
-                    // "Clutch SOS" launcher entry only while the lock-screen button is on.
-                    val a = call.arguments as Map<*, *>
-                    val png = a["png"] as ByteArray?
+                    // QR image for EmergencyActivity, the widget and the tile.
+                    val png = call.arguments as ByteArray?
                     val file = File(filesDir, EmergencyActivity.FILE)
                     if (png != null) file.writeBytes(png) else file.delete()
-                    setSosShortcut(png != null && a["shortcut"] == true)
                     SosWidgetProvider.refresh(this)
                     getSystemService(NotificationManager::class.java).cancel(7101) // older builds used a notification
                     result.success(null)
                 }
-                "openLockSettings" -> {
-                    // Samsung/AOSP lock screen settings, falling back to the main Settings page.
-                    val tries = listOf(Intent("android.settings.LOCK_SCREEN_SETTINGS"), Intent(Settings.ACTION_SETTINGS))
-                    result.success(tries.any { i ->
-                        try { startActivity(i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); true } catch (_: Exception) { false }
-                    })
+                "pinWidget" -> {
+                    val awm = AppWidgetManager.getInstance(this)
+                    result.success(
+                        awm.isRequestPinAppWidgetSupported &&
+                            awm.requestPinAppWidget(ComponentName(this, SosWidgetProvider::class.java), null, null),
+                    )
                 }
                 "addTile" -> {
                     if (Build.VERSION.SDK_INT >= 33) {
@@ -154,16 +150,6 @@ class MainActivity : FlutterFragmentActivity() {
                 else -> result.notImplemented()
             }
         }
-    }
-
-    /** The "Clutch SOS" launcher entry exists only while the lock-screen button is on,
-     *  so it can be picked as a lock-screen shortcut without cluttering the drawer otherwise. */
-    private fun setSosShortcut(on: Boolean) {
-        packageManager.setComponentEnabledSetting(
-            ComponentName(this, "app.clutch.clutch.SosShortcut"),
-            if (on) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-            PackageManager.DONT_KILL_APP,
-        )
     }
 
     private fun setLockWallpaper(png: ByteArray, result: MethodChannel.Result) {

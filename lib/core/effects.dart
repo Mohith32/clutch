@@ -43,11 +43,12 @@ class Native {
   /// files and returns its path, or null if cancelled.
   static Future<String?> pickImage() => _c.invokeMethod<String>('pickImage');
 
-  /// Lock-screen button: saves [png] for EmergencyActivity (showWhenLocked) and
-  /// enables the "Clutch SOS" entry that can be set as a lock-screen shortcut.
-  static Future<void> syncPass(Uint8List? png, {required bool shortcut}) =>
-      _c.invokeMethod('syncPass', {'png': png, 'shortcut': shortcut});
-  static Future<bool> openLockSettings() async => await _c.invokeMethod<bool>('openLockSettings') ?? false;
+  /// Saves [png] for EmergencyActivity (shown over the lock screen), the widget
+  /// and the Quick Settings tile; null removes it.
+  static Future<void> syncPass(Uint8List? png) => _c.invokeMethod('syncPass', png);
+
+  /// Asks the launcher to add the Emergency QR widget. False if it can't.
+  static Future<bool> pinWidget() async => await _c.invokeMethod<bool>('pinWidget') ?? false;
 
   /// Android 13+ system prompt to add the "Emergency QR" Quick Settings tile.
   /// Returns -1 when the prompt isn't available on this Android version.
@@ -92,16 +93,15 @@ class Effects {
     await _pass(s).catchError((e) => debugPrint('clutch: pass: $e'));
   }
 
-  /// Keeps the lock-screen QR (EmergencyActivity, widget, tile) current. The QR
-  /// image always reflects the selected card; the toggle only adds the
-  /// "Clutch SOS" shortcut entry.
+  /// Keeps the QR image behind the Emergency QR widget and tile current: it
+  /// always reflects the selected card.
   static Future<void> _pass(AppStore s) async {
     if (!isAndroid) return;
     final p = s.selected;
     final overlay = navKey.currentState?.overlay;
-    if (p == null || overlay == null) return Native.syncPass(null, shortcut: false);
+    if (p == null || overlay == null) return Native.syncPass(null);
     final png = await capture(overlay.context, Center(child: QrBadge(p: p, sos: s.sos)), QrBadge.exportSize, 3, overlay: overlay);
-    await Native.syncPass(png, shortcut: s.lockPass);
+    await Native.syncPass(png);
   }
 
 

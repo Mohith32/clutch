@@ -245,11 +245,6 @@
   "styleSage": "Sage",
   "styleRose": "Rose",
   "styleSky": "Sky",
-  "passToggle": "Lock screen button",
-  "passToggleSub": "Adds a “Clutch SOS” button you can put on your lock screen. Tapping it shows your QR without unlocking.",
-  "passSetupTitle": "Put the SOS button on your lock screen",
-  "passSteps": "1. Touch and hold your lock screen, or open lock screen settings → Edit Lock screen\n2. Tap one of the two bottom shortcuts\n3. Pick “Clutch SOS” and tap Done",
-  "openLockSettings": "Open lock screen settings",
   "addTile": "Also add to Quick Settings",
   "tileLabel": "Emergency QR",
   "tileManual": "Swipe down twice, tap ✎ edit, and drag “Emergency QR” in.",
@@ -257,5 +252,10 @@
   "qrModeLink": "Clutch page",
   "qrModeText": "Plain text",
   "qrModeLinkHint": "Opens a clean Clutch page with tap-to-call buttons. Needs internet on the scanner's phone. Your details live only inside the QR, never on a server.",
-  "qrModeTextHint": "Works with no internet at all, but opens as plain text."
+  "qrModeTextHint": "Works with no internet at all, but opens as plain text.",
+  "widgetTitle": "Emergency QR widget",
+  "widgetSub": "Puts your “In case of emergency” QR on your home screen, or your lock screen where your phone allows it. Tap it to show the QR full screen.",
+  "addWidget": "Add widget",
+  "widgetLockHint": "For the lock screen: touch and hold the lock screen → Widgets → Clutch.",
+  "widgetManual": "Touch and hold your home screen → Widgets → Clutch."
 }
