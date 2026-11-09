@@ -562,7 +562,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String get passSteps =>
-      '1. లాక్ స్క్రీన్ సెట్టింగ్‌లు తెరవండి\n2. Shortcuts నొక్కండి\n3. ఎడమ లేదా కుడి మూలకు “Clutch SOS” ఎంచుకోండి';
+      '1. లాక్ స్క్రీన్‌ను నొక్కి పట్టుకోండి, లేదా లాక్ స్క్రీన్ సెట్టింగ్‌లు → Edit Lock screen తెరవండి\n2. కింద ఉన్న రెండు షార్ట్‌కట్‌లలో ఒకదాన్ని నొక్కండి\n3. “Clutch SOS” ఎంచుకుని Done నొక్కండి';
 
   @override
   String get openLockSettings => 'లాక్ స్క్రీన్ సెట్టింగ్‌లు తెరవండి';

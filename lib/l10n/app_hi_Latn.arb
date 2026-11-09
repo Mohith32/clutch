@@ -171,7 +171,7 @@
   "passToggle": "Lock screen button",
   "passToggleSub": "Ek “Clutch SOS” button add karta hai jo lock screen pe rakh sakte ho. Tap karo to bina unlock ke QR dikhega.",
   "passSetupTitle": "SOS button lock screen pe lagao",
-  "passSteps": "1. Lock screen settings kholo\n2. Shortcuts pe tap karo\n3. Left ya right corner ke liye “Clutch SOS” chuno",
+  "passSteps": "1. Lock screen ko touch karke hold karo, ya lock screen settings → Edit Lock screen kholo\n2. Neeche ke do shortcuts mein se ek pe tap karo\n3. “Clutch SOS” chuno aur Done dabao",
   "openLockSettings": "Lock screen settings kholo",
   "addTile": "Quick Settings mein bhi add karo",
   "tileLabel": "Emergency QR",

@@ -562,7 +562,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passSteps =>
-      '1. Open lock screen settings\n2. Tap Shortcuts\n3. Pick “Clutch SOS” for the left or right corner';
+      '1. Touch and hold your lock screen, or open lock screen settings → Edit Lock screen\n2. Tap one of the two bottom shortcuts\n3. Pick “Clutch SOS” and tap Done';
 
   @override
   String get openLockSettings => 'Open lock screen settings';

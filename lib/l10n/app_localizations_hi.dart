@@ -562,7 +562,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get passSteps =>
-      '1. लॉक स्क्रीन सेटिंग्स खोलें\n2. Shortcuts पर टैप करें\n3. बाएँ या दाएँ कोने के लिए “Clutch SOS” चुनें';
+      '1. लॉक स्क्रीन को दबाकर रखें, या लॉक स्क्रीन सेटिंग्स → Edit Lock screen खोलें\n2. नीचे के दो शॉर्टकट में से एक पर टैप करें\n3. “Clutch SOS” चुनें और Done दबाएँ';
 
   @override
   String get openLockSettings => 'लॉक स्क्रीन सेटिंग्स खोलें';
@@ -1153,7 +1153,7 @@ class AppLocalizationsHiLatn extends AppLocalizationsHi {
 
   @override
   String get passSteps =>
-      '1. Lock screen settings kholo\n2. Shortcuts pe tap karo\n3. Left ya right corner ke liye “Clutch SOS” chuno';
+      '1. Lock screen ko touch karke hold karo, ya lock screen settings → Edit Lock screen kholo\n2. Neeche ke do shortcuts mein se ek pe tap karo\n3. “Clutch SOS” chuno aur Done dabao';
 
   @override
   String get openLockSettings => 'Lock screen settings kholo';
