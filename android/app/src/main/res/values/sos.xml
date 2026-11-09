@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sos_red">#C8413B</color>
+    <string name="sos_label">Clutch SOS</string>
+    <string name="sos_tile">Emergency QR</string>
+</resources>

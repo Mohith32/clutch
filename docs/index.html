@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Emergency info · Clutch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+<!--
+  Clutch emergency page. Everything shown here is decoded from the part of the
+  link after "#", which browsers never send to the server: the host only ever
+  serves this static file, it never sees anyone's details.
+-->
+<style>
+  :root {
+    --bg: #F5F3EE; --card: #FFFFFF; --ink: #1C1C21; --muted: rgba(28,28,33,.6);
+    --edge: #DAD6CC; --red: #C8413B; --red-soft: #F6DEDC; --sage: #CFDCC8;
+    --rose: #EDD3D8; --sky: #D3E1EE; --butter: #F1E7C3;
+    --shadow: 0 6px 18px rgba(0,0,0,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141416; --card: #1F1F23; --ink: #ECEBE6; --muted: rgba(236,235,230,.62);
+      --edge: #3A3A41; --red: #EE7B74; --red-soft: #3A2423; --shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 16px/1.45 "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: max(20px, env(safe-area-inset-top)) 16px 40px;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 480px; margin: 0 auto; display: grid; gap: 14px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; justify-self: start;
+    background: var(--red-soft); color: var(--red); border-radius: 999px;
+    padding: 7px 14px; font: 700 12px/1 Unbounded, sans-serif; letter-spacing: .04em;
+  }
+  .pill svg { width: 14px; height: 14px; fill: currentColor; }
+  .hero { display: flex; align-items: flex-start; gap: 14px; padding: 6px 2px 4px; }
+  h1 { font: 700 30px/1.15 Unbounded, sans-serif; letter-spacing: -.02em; flex: 1; overflow-wrap: anywhere; }
+  .blood {
+    flex: none; width: 76px; height: 76px; border-radius: 22px; background: var(--red); color: #fff;
+    display: grid; place-content: center; text-align: center;
+  }
+  .blood b { font: 700 24px/1 Unbounded, sans-serif; }
+  .blood small { font-size: 10px; font-weight: 700; letter-spacing: .1em; margin-top: 4px; }
+  .card {
+    background: var(--card); border: 1px solid var(--edge); border-radius: 22px;
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .card.alert { background: var(--red-soft); border-color: transparent; }
+  .label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .alert .label, .alert .value { color: var(--red); }
+  .value { font-size: 19px; font-weight: 700; overflow-wrap: anywhere; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--bg); border-radius: 999px; padding: 6px 12px; font-weight: 600; }
+  .alert .chip { background: var(--card); color: var(--red); }
+  a.call {
+    display: flex; align-items: center; gap: 14px; text-decoration: none; color: #1C1C21;
+    background: var(--sage); border-radius: 20px; padding: 14px 16px; min-height: 64px;
+  }
+  a.call:nth-of-type(2) { background: var(--sky); }
+  a.call:nth-of-type(3) { background: var(--rose); }
+  a.call .ico { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.7); display: grid; place-content: center; flex: none; }
+  a.call .ico svg { width: 20px; height: 20px; fill: #1C1C21; }
+  a.call .who { font-weight: 600; font-size: 14px; }
+  a.call .num { font: 700 18px/1.2 Unbounded, sans-serif; }
+  a.sos {
+    display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none;
+    background: var(--ink); color: var(--bg); border-radius: 999px; padding: 17px; font-weight: 700; font-size: 17px;
+  }
+  .calls { display: grid; gap: 10px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; line-height: 1.5; padding-top: 8px; }
+  footer b { font-family: Unbounded, sans-serif; color: var(--ink); }
+  .empty { text-align: center; padding: 60px 10px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main id="app"><p class="empty">Loading…</p></main>
+<script>
+(function () {
+  // Fragment format (mirrors qrUrl in lib/domain/profile.dart):
+  // segments joined by "~", spaces as "_", everything else percent-encoded.
+  var raw = location.hash.slice(1);
+  var app = document.getElementById('app');
+  var phoneIcon = '<svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.5.57 3.6a1 1 0 0 1-.25 1z"/></svg>';
+  var plusIcon = '<svg viewBox="0 0 24 24"><path d="M10 3h4v7h7v4h-7v7h-4v-7H3v-4h7z"/></svg>';
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function digits(n) { return n.replace(/[^\d+]/g, ''); }
+  // "Amulya (Mom) 99893 01297" -> { who: "Amulya (Mom)", phone: "99893 01297" }
+  function splitPhone(s) {
+    var m = s.match(/^(.*?)\s*(\+?[\d][\d\s()\-]{5,})$/);
+    return m ? { who: m[1].trim(), phone: m[2].trim() } : { who: s.trim(), phone: '' };
+  }
+  function call(c, label) {
+    if (!c.phone) return '<div class="card"><div class="value">' + esc(c.who) + '</div></div>';
+    return '<a class="call" href="tel:' + digits(c.phone) + '"><span class="ico">' + phoneIcon + '</span><span>' +
+      '<div class="who">' + esc(label) + ' ' + esc(c.who) + '</div><div class="num">' + esc(c.phone) + '</div></span></a>';
+  }
+  function chips(list) {
+    return '<div class="chips">' + list.split(/,\s*/).filter(Boolean).map(function (x) { return '<span class="chip">' + esc(x) + '</span>'; }).join('') + '</div>';
+  }
+  function section(label, body, cls) {
+    return '<section class="card ' + (cls || '') + '"><div class="label">' + esc(label) + '</div>' + body + '</section>';
+  }
+
+  if (!raw) { app.innerHTML = '<p class="empty">This page shows emergency details from a Clutch QR code.</p>'; return; }
+
+  var segs;
+  try { segs = raw.split('~').map(function (s) { return decodeURIComponent(s.replace(/_/g, ' ')); }); }
+  catch (e) { app.innerHTML = '<p class="empty">This link looks damaged. Try scanning again.</p>'; return; }
+
+  var d = { name: '', calls: [] };
+  segs.forEach(function (s, i) {
+    if (s === 'EMERGENCY') return;
+    if (s.indexOf('Blood ') === 0) d.blood = s.slice(6);
+    else if (s.indexOf('Allergy: ') === 0) d.allergy = s.slice(9);
+    else if (s.indexOf('Call: ') === 0) d.calls.unshift(splitPhone(s.slice(6)));
+    else if (s.indexOf('Also: ') === 0) s.slice(6).split(/,\s*(?=\D)/).forEach(function (x) { d.calls.push(splitPhone(x)); });
+    else if (s.indexOf('Meds: ') === 0) d.meds = s.slice(6);
+    else if (s.indexOf('Conditions: ') === 0) d.cond = s.slice(12);
+    else if (s.indexOf('SOS ') === 0) d.sos = s.slice(4);
+    else if (s.indexOf('Doctor: ') === 0) d.doctor = splitPhone(s.slice(8));
+    else if (s === 'Organ donor') d.donor = true;
+    else if (s.indexOf('Note: ') === 0) d.note = s.slice(6);
+    else if (s.indexOf('Updated ') === 0) d.updated = s.slice(8);
+    else if (i === 1) d.name = s;
+  });
+
+  var h = '<span class="pill">' + plusIcon + 'IN CASE OF EMERGENCY</span>';
+  h += '<div class="hero"><h1>' + esc(d.name || 'Emergency info') + '</h1>' +
+    (d.blood ? '<div class="blood"><b>' + esc(d.blood) + '</b><small>BLOOD</small></div>' : '') + '</div>';
+  if (d.allergy) h += section('Allergies', chips(d.allergy), 'alert');
+  if (d.calls.length) h += '<div class="calls">' + d.calls.map(function (c) { return call(c, 'Call'); }).join('') + '</div>';
+  if (d.cond) h += section('Conditions', chips(d.cond));
+  if (d.meds) h += section('Medications', chips(d.meds));
+  if (d.doctor) h += section('Doctor', d.doctor.phone
+    ? '<div class="value"><a style="color:inherit" href="tel:' + digits(d.doctor.phone) + '">' + esc(d.doctor.who + ' ' + d.doctor.phone) + '</a></div>'
+    : '<div class="value">' + esc(d.doctor.who) + '</div>');
+  if (d.donor) h += section('Organ donor', '<div class="value">Yes</div>');
+  if (d.note) h += section('Notes', '<div class="value" style="font-weight:500">' + esc(d.note) + '</div>');
+  if (d.sos) h += '<a class="sos" href="tel:' + digits(d.sos) + '">' + phoneIcon.replace('<svg', '<svg width="20" height="20" fill="currentColor"') + 'Call emergency services · ' + esc(d.sos) + '</a>';
+  h += '<footer>' + (d.updated ? 'Updated ' + esc(d.updated) + '<br>' : '') +
+    'Details provided by the card holder. Not verified medical advice.<br>Made with <b>clutch</b></footer>';
+  app.innerHTML = h;
+  document.title = (d.name ? d.name + ' · ' : '') + 'Emergency info';
+})();
+</script>
+</body>
+</html>

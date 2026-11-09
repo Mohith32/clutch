@@ -1,0 +1,261 @@
+{
+  "@@locale": "en",
+  "appName": "Clutch",
+  "tagline": "comes in clutch when it matters",
+  "next": "Next",
+  "back": "Back",
+  "skip": "Skip",
+  "done": "Done",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "duplicate": "Duplicate",
+  "add": "Add",
+  "yes": "Yes",
+  "no": "No",
+  "settings": "Settings",
+  "saved": "Saved ✓",
+  "ob1Title": "Your emergency info, glanceable.",
+  "ob1Body": "Allergies, blood group and who to call, right on your lock screen. Readable in 2 seconds, no unlock needed.",
+  "ob2Title": "No account. No internet. No cap.",
+  "ob2Body": "Everything stays encrypted on this phone. The app doesn't even have permission to go online.",
+  "ob3Title": "For you and the whole fam.",
+  "ob3Body": "Make cards for parents, kids and grandparents. Print wallet cards that work even when the phone doesn't.",
+  "obCta": "Make my first card",
+  "disclaimer": "Clutch is not a medical device. You're responsible for keeping your details accurate.",
+  "offlineSticker": "✦ 100% offline",
+  "homeTitle": "your cards",
+  "homeEmptyTitle": "No cards yet",
+  "homeEmptyBody": "Takes about 3 minutes. Only the name is required, everything else is optional.",
+  "newCard": "New card",
+  "makeOutputs": "Wallpaper, card & QR",
+  "staleBanner": "{name}'s card is 6+ months old. Quick check?",
+  "@staleBanner": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteConfirm": "Delete {name}'s card? This can't be undone.",
+  "@deleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "updatedOn": "Updated {date}",
+  "@updatedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "fam": "the fam",
+  "stepBasics": "Basics",
+  "stepMedical": "Medical",
+  "stepContacts": "Contacts",
+  "stepReview": "Review",
+  "stepOf": "Step {n} of 4",
+  "@stepOf": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "fName": "Full name",
+  "nameRequired": "Name is the one thing we need",
+  "fLanguage": "Card language",
+  "fLanguageSub": "What responders will read on the wallpaper and card",
+  "fVibe": "Card colour",
+  "fBlood": "Blood group",
+  "bloodUnknown": "Not sure",
+  "fDonor": "Organ donor",
+  "notSet": "Skip",
+  "fAllergies": "Allergies",
+  "fConditions": "Conditions",
+  "fMeds": "Medications",
+  "medName": "Medicine",
+  "medDose": "Dose",
+  "addMed": "Add medication",
+  "fNotes": "Notes for responders",
+  "notesHint": "e.g. Uses an inhaler, carries an EpiPen",
+  "addItemHint": "Type and tap +",
+  "fContacts": "Emergency contacts",
+  "contactN": "Contact {n}",
+  "@contactN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "cName": "Name",
+  "cRelation": "Relation",
+  "cPhone": "Phone",
+  "badPhone": "That number looks off",
+  "addContact": "Add contact",
+  "pickContact": "Pick from contacts",
+  "maxContactsNote": "Up to 3 contacts. The first one goes front and centre.",
+  "fDoctor": "Doctor",
+  "doctorName": "Doctor's name",
+  "doctorPhone": "Doctor's phone",
+  "reviewTitle": "Looking good ✨",
+  "reviewBody": "Saved on this phone only. Next up: wallpaper, wallet card and QR.",
+  "relMom": "Mom",
+  "relDad": "Dad",
+  "relPartner": "Partner",
+  "relSibling": "Sibling",
+  "relFriend": "Friend",
+  "relChild": "Child",
+  "tabWallpaper": "Wallpaper",
+  "tabCard": "Card",
+  "tabQr": "QR",
+  "whatShows": "What shows up",
+  "wpWarning": "Heads up: anyone who sees your phone can read your lock screen. Only show what you're okay with.",
+  "wpStyle": "Style",
+  "styleLight": "Light",
+  "styleDark": "Dark",
+  "wpOffset": "Move it up or down",
+  "clockZone": "clock zone",
+  "setLock": "Set as lock screen",
+  "saveToPhotos": "Save to Photos",
+  "sharePng": "Share PNG",
+  "wpDone": "Lock screen glow-up done ✨",
+  "savedToPhotos": "Saved to Photos ✓",
+  "iosStepsTitle": "Now set it as your lock screen",
+  "iosSteps": "1. Open Photos and find the Clutch image\n2. Tap Share → Use as Wallpaper\n3. Choose Lock Screen and tap Add",
+  "exportPdf": "Print / PDF",
+  "thisCard": "Just this card",
+  "wholeFam": "All {n} cards",
+  "@wholeFam": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "pdfHint": "Print at 100% scale. Cut around each pair, fold down the middle, laminate if you can.",
+  "front": "Front",
+  "backSide": "Back",
+  "qrCount": "{n}/300 characters",
+  "@qrCount": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "shareQr": "Share QR",
+  "writeNfc": "Write to NFC tag",
+  "nfcHold": "Hold an NFC tag or sticker to the back of your phone…",
+  "nfcDone": "Written to tag ✨",
+  "nfcFail": "Couldn't write: {error}",
+  "@nfcFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "vName": "Name",
+  "vBlood": "Blood",
+  "vAllergies": "Allergies",
+  "vConditions": "Conditions",
+  "vMeds": "Meds",
+  "vContacts": "Contacts",
+  "vDoctor": "Doctor",
+  "vDonor": "Donor",
+  "vNotes": "Notes",
+  "vSos": "SOS number",
+  "somethingWrong": "Something went wrong. Try again?",
+  "sLanguage": "App language",
+  "system": "System",
+  "sTheme": "Theme",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "sReminder": "6-month check-in",
+  "sReminderSub": "A nudge to make sure your cards are still accurate",
+  "sLock": "Edit lock",
+  "sLockSub": "Fingerprint, face or PIN before editing or exporting",
+  "sLockUnavailable": "Set a screen lock on your phone first",
+  "sSos": "Emergency number",
+  "sSosSub": "Printed on your outputs. Default for your region: {n}",
+  "@sSosSub": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "sBackup": "Backup",
+  "passphrase": "Passphrase (optional)",
+  "passphraseHint": "Leave empty for an unencrypted file",
+  "backupWarn": "Without a passphrase, anyone with the file can read your cards.",
+  "exportBackup": "Export backup",
+  "importBackup": "Import backup",
+  "importDone": "Imported {n} cards ✓",
+  "@importDone": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "importFail": "That file didn't work",
+  "needPass": "This backup is locked. Enter its passphrase above.",
+  "wrongPass": "Wrong passphrase",
+  "sAbout": "About",
+  "privacyLine": "No account. No analytics. No internet permission. Your data never leaves this phone.",
+  "licences": "Licences",
+  "unlockReason": "Unlock to edit or export your emergency card",
+  "remChannel": "Card check-ins",
+  "remTitle": "Card check-in ⏰",
+  "remBody": "Is {name}'s emergency card still accurate?",
+  "@remBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "outIce": "IN CASE OF EMERGENCY",
+  "outMoreInfo": "MEDICAL INFO",
+  "outBlood": "Blood",
+  "outAllergies": "Allergies",
+  "outConditions": "Conditions",
+  "outMeds": "Medications",
+  "outCall": "Call",
+  "outDoctor": "Doctor",
+  "outDonor": "Organ donor",
+  "outNotes": "Notes",
+  "outSos": "Emergency",
+  "outUpdated": "Updated",
+  "outScan": "Scan for details",
+  "outDisclaimer": "Details provided by the card holder. Not verified medical advice.",
+  "wpLayout": "Layout",
+  "layoutQr": "QR only",
+  "layoutDetails": "Show details",
+  "layoutQrHint": "Your lock screen shows only “In case of emergency” and a QR. Scanning it reveals your details.",
+  "wpBackground": "Background",
+  "stylePhoto": "My photo",
+  "styleSage": "Sage",
+  "styleRose": "Rose",
+  "styleSky": "Sky",
+  "passToggle": "Lock screen button",
+  "passToggleSub": "Adds a “Clutch SOS” button you can put on your lock screen. Tapping it shows your QR without unlocking.",
+  "passSetupTitle": "Put the SOS button on your lock screen",
+  "passSteps": "1. Open lock screen settings\n2. Tap Shortcuts\n3. Pick “Clutch SOS” for the left or right corner",
+  "openLockSettings": "Open lock screen settings",
+  "addTile": "Also add to Quick Settings",
+  "tileLabel": "Emergency QR",
+  "tileManual": "Swipe down twice, tap ✎ edit, and drag “Emergency QR” in.",
+  "qrOpensAs": "When scanned, open as",
+  "qrModeLink": "Clutch page",
+  "qrModeText": "Plain text",
+  "qrModeLinkHint": "Opens a clean Clutch page with tap-to-call buttons. Needs internet on the scanner's phone. Your details live only inside the QR, never on a server.",
+  "qrModeTextHint": "Works with no internet at all, but opens as plain text."
+}
