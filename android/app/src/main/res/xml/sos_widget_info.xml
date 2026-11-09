@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- keyguard = may be placed on the lock screen where the launcher/OEM supports it. -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/sos_widget"
+    android:initialKeyguardLayout="@layout/sos_widget"
+    android:previewImage="@mipmap/ic_sos"
+    android:description="@string/sos_widget_desc"
+    android:minWidth="110dp"
+    android:minHeight="140dp"
+    android:targetCellWidth="2"
+    android:targetCellHeight="2"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen|keyguard"/>

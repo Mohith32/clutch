@@ -3,4 +3,6 @@
     <color name="sos_red">#C8413B</color>
     <string name="sos_label">Clutch SOS</string>
     <string name="sos_tile">Emergency QR</string>
+    <string name="sos_widget_desc">Your \"In case of emergency\" QR, right on the lock screen</string>
+    <string name="sos_widget_empty">Turn on the lock screen button in Clutch</string>
 </resources>

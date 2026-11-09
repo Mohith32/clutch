@@ -45,8 +45,8 @@ class Native {
 
   /// Lock-screen button: saves [png] for EmergencyActivity (showWhenLocked) and
   /// enables the "Clutch SOS" entry that can be set as a lock-screen shortcut.
-  static Future<void> enablePass(Uint8List png) => _c.invokeMethod('enablePass', png);
-  static Future<void> disablePass() => _c.invokeMethod('disablePass');
+  static Future<void> syncPass(Uint8List? png, {required bool shortcut}) =>
+      _c.invokeMethod('syncPass', {'png': png, 'shortcut': shortcut});
   static Future<bool> openLockSettings() async => await _c.invokeMethod<bool>('openLockSettings') ?? false;
 
   /// Android 13+ system prompt to add the "Emergency QR" Quick Settings tile.
@@ -92,14 +92,18 @@ class Effects {
     await _pass(s).catchError((e) => debugPrint('clutch: pass: $e'));
   }
 
+  /// Keeps the lock-screen QR (EmergencyActivity, widget, tile) current. The QR
+  /// image always reflects the selected card; the toggle only adds the
+  /// "Clutch SOS" shortcut entry.
   static Future<void> _pass(AppStore s) async {
     if (!isAndroid) return;
     final p = s.selected;
     final overlay = navKey.currentState?.overlay;
-    if (!s.lockPass || p == null || overlay == null) return Native.disablePass();
+    if (p == null || overlay == null) return Native.syncPass(null, shortcut: false);
     final png = await capture(overlay.context, Center(child: QrBadge(p: p, sos: s.sos)), QrBadge.exportSize, 3, overlay: overlay);
-    await Native.enablePass(png);
+    await Native.syncPass(png, shortcut: s.lockPass);
   }
+
 
   static Future<void> _reminders(AppStore s) async {
     if (!_ready) return;

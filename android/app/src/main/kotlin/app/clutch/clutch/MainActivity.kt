@@ -112,14 +112,15 @@ class MainActivity : FlutterFragmentActivity() {
                     pending = result
                     imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
-                "enablePass" -> {
-                    File(filesDir, EmergencyActivity.FILE).writeBytes(call.arguments as ByteArray)
-                    setSosShortcut(true)
-                    result.success(null)
-                }
-                "disablePass" -> {
-                    File(filesDir, EmergencyActivity.FILE).delete()
-                    setSosShortcut(false)
+                "syncPass" -> {
+                    // QR image for EmergencyActivity, the widget and the tile; the
+                    // "Clutch SOS" launcher entry only while the lock-screen button is on.
+                    val a = call.arguments as Map<*, *>
+                    val png = a["png"] as ByteArray?
+                    val file = File(filesDir, EmergencyActivity.FILE)
+                    if (png != null) file.writeBytes(png) else file.delete()
+                    setSosShortcut(png != null && a["shortcut"] == true)
+                    SosWidgetProvider.refresh(this)
                     getSystemService(NotificationManager::class.java).cancel(7101) // older builds used a notification
                     result.success(null)
                 }
